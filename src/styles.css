@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg-primary: #080b14;
+  --bg-secondary: #0e1221;
+  --card-bg: #131728;
+  --border: #1e2540;
+  --hover-bg: #1a2035;
+
+  --text-primary: #f0f4ff;
+  --text-secondary: #c4cde8;
+  --text-muted: #5a6a9a;
+
+  --accent: #06b6d4;
+  --accent-glow: rgba(6, 182, 212, 0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100%;
+}
+
+/* Subtle grid background texture */
+body {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2e3a60; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+app-root > * { animation: fadeInUp 0.3s ease; }

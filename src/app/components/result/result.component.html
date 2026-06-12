@@ -1,0 +1,101 @@
+<div class="result-page" *ngIf="result">
+
+  <!-- Score Hero -->
+  <div class="score-hero">
+    <div class="grade-emoji">{{ grade.emoji }}</div>
+    <div class="grade-label" [style.color]="grade.color">{{ grade.label }}</div>
+    <div class="score-display">
+      <span class="score-num" [style.color]="grade.color">{{ result.score }}</span>
+      <span class="score-denom">/ {{ result.total }}</span>
+    </div>
+    <div class="score-pct">{{ percentage }}% correct</div>
+    <p class="grade-msg">{{ grade.message }}</p>
+
+    <!-- Stats Row -->
+    <div class="stats-row">
+      <div class="stat-chip">
+        <span class="chip-icon">⏱️</span>
+        <div>
+          <div class="chip-val">{{ formattedTime }}</div>
+          <div class="chip-lbl">Time Taken</div>
+        </div>
+      </div>
+      <div class="stat-chip">
+        <span class="chip-icon">✅</span>
+        <div>
+          <div class="chip-val">{{ result.score }}</div>
+          <div class="chip-lbl">Correct</div>
+        </div>
+      </div>
+      <div class="stat-chip">
+        <span class="chip-icon">❌</span>
+        <div>
+          <div class="chip-val">{{ result.total - result.score }}</div>
+          <div class="chip-lbl">Incorrect / Skipped</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Topic Breakdown -->
+  <div class="section-card">
+    <h3 class="section-title">Performance by Topic</h3>
+    <div class="breakdown-list">
+      <div *ngFor="let b of result.breakdown" class="breakdown-row">
+        <div class="breakdown-left">
+          <span class="topic-dot" [style.background]="getTopicColor(b.topic)"></span>
+          <span class="topic-name">{{ b.topic }}</span>
+        </div>
+        <div class="breakdown-right">
+          <div class="breakdown-bar-track">
+            <div class="breakdown-bar-fill"
+              [style.width.%]="b.total ? (b.correct / b.total) * 100 : 0"
+              [style.background]="getTopicColor(b.topic)">
+            </div>
+          </div>
+          <span class="breakdown-score" [style.color]="getTopicColor(b.topic)">{{ b.correct }}/{{ b.total }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Review Answers Toggle -->
+  <div class="section-card">
+    <button class="toggle-btn" (click)="showAnswers = !showAnswers">
+      {{ showAnswers ? 'Hide' : 'Review' }} All Answers
+      <span>{{ showAnswers ? '▲' : '▼' }}</span>
+    </button>
+
+    <div class="answers-list" *ngIf="showAnswers">
+      <div *ngFor="let a of result.answers; let i = index" class="answer-card" [class.answer-correct]="a.correct" [class.answer-wrong]="!a.correct">
+        <div class="answer-header">
+          <span class="answer-num">Q{{ i + 1 }}</span>
+          <span class="answer-topic-tag" [style.color]="getTopicColor(a.question.topic)">{{ a.question.topic }}</span>
+          <span class="answer-verdict" [class.verdict-correct]="a.correct" [class.verdict-wrong]="!a.correct">
+            {{ a.correct ? '✓ Correct' : (a.selected === null ? '⏭ Skipped' : '✗ Wrong') }}
+          </span>
+        </div>
+        <p class="answer-question">{{ a.question.question }}</p>
+        <div class="answer-options">
+          <div *ngFor="let opt of a.question.options; let j = index"
+            class="mini-opt"
+            [class.mini-correct]="j === a.question.correctIndex"
+            [class.mini-selected-wrong]="j === a.selected && j !== a.question.correctIndex">
+            <span class="mini-label">{{ optionLabels[j] }}</span>
+            <span class="mini-text">{{ opt }}</span>
+          </div>
+        </div>
+        <div class="answer-explanation">
+          <span class="exp-lead">💡</span>
+          <p>{{ a.question.explanation }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Actions -->
+  <div class="actions-row">
+    <button class="btn-secondary" (click)="home()">← Back to Home</button>
+    <button class="btn-primary" (click)="restart()">Retake Quiz →</button>
+  </div>
+</div>

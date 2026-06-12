@@ -1,0 +1,13 @@
+<div class="timer-wrap" [class]="urgency">
+  <div class="timer-ring">
+    <svg viewBox="0 0 60 60" class="ring-svg">
+      <circle cx="30" cy="30" r="26" class="ring-track"/>
+      <circle cx="30" cy="30" r="26" class="ring-fill"
+        [style.stroke-dashoffset]="163.4 - (163.4 * progressPercent / 100)"
+        [class.ring-critical]="urgency === 'critical'"
+        [class.ring-warning]="urgency === 'warning'"/>
+    </svg>
+    <span class="timer-count" [class.pulse]="secondsLeft <= 5">{{ secondsLeft }}</span>
+  </div>
+  <span class="timer-label">seconds</span>
+</div>

@@ -1,0 +1,67 @@
+<div class="quiz-page" *ngIf="state">
+  <!-- Header -->
+  <header class="quiz-header">
+    <div class="header-left">
+      <span class="brand-mark">CS QuizLab</span>
+      <span class="q-counter">{{ state.currentIndex + 1 }} / {{ state.questions.length }}</span>
+    </div>
+    <app-progress-bar
+      [totalSeconds]="30"
+      [resetSignal]="timerReset"
+      (timeExpired)="onTimeExpired()">
+    </app-progress-bar>
+  </header>
+
+  <!-- Question Progress Track -->
+  <div class="track-bar">
+    <div class="track-dot"
+      *ngFor="let q of state.questions; let i = index"
+      [class.done]="i < state.currentIndex"
+      [class.active]="i === state.currentIndex"
+      [class.correct]="i < state.currentIndex && state.selectedAnswers[i] === q.correctIndex"
+      [class.wrong]="i < state.currentIndex && state.selectedAnswers[i] !== null && state.selectedAnswers[i] !== q.correctIndex"
+      [class.skipped]="i < state.currentIndex && state.selectedAnswers[i] === null">
+    </div>
+  </div>
+
+  <!-- Question Card -->
+  <main class="question-area">
+    <div class="topic-tag" [style.color]="getTopicColor(currentQuestion.topic)" [style.border-color]="getTopicColor(currentQuestion.topic) + '44'" [style.background]="getTopicColor(currentQuestion.topic) + '11'">
+      {{ currentQuestion.topic }}
+    </div>
+
+    <h2 class="question-text">{{ currentQuestion.question }}</h2>
+
+    <!-- Options -->
+    <div class="options-grid">
+      <button
+        *ngFor="let opt of currentQuestion.options; let i = index"
+        [class]="getOptionClass(i)"
+        (click)="selectOption(i)"
+        [disabled]="isAnswered">
+        <span class="option-label">{{ optionLabels[i] }}</span>
+        <span class="option-text">{{ opt }}</span>
+        <span class="option-indicator" *ngIf="showFeedback && i === currentQuestion.correctIndex">✓</span>
+        <span class="option-indicator wrong-icon" *ngIf="showFeedback && i === selectedOptionIndex && i !== currentQuestion.correctIndex">✗</span>
+      </button>
+    </div>
+
+    <!-- Explanation -->
+    <div class="explanation-box" *ngIf="showFeedback">
+      <div class="exp-header">
+        <span *ngIf="selectedOptionIndex === currentQuestion.correctIndex" class="exp-result correct-result">✅ Correct!</span>
+        <span *ngIf="selectedOptionIndex !== currentQuestion.correctIndex && selectedOptionIndex !== null" class="exp-result wrong-result">❌ Incorrect</span>
+        <span *ngIf="selectedOptionIndex === null" class="exp-result skip-result">⏭️ Time's up!</span>
+      </div>
+      <p class="exp-text">{{ currentQuestion.explanation }}</p>
+    </div>
+
+    <!-- Next Button -->
+    <div class="action-row" *ngIf="showFeedback">
+      <button class="next-btn" (click)="nextQuestion()">
+        {{ isLastQuestion ? 'See Results' : 'Next Question' }}
+        <span>→</span>
+      </button>
+    </div>
+  </main>
+</div>

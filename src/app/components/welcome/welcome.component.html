@@ -1,0 +1,48 @@
+<div class="welcome-page">
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-badge">University Level Assessment</div>
+    <h1 class="hero-title">
+      <span class="title-line1">CS</span>
+      <span class="title-line2">QuizLab</span>
+    </h1>
+    <p class="hero-sub">Test your knowledge across four core Computer Science domains with timed, university-level questions.</p>
+    <button class="start-btn" (click)="startQuiz()">
+      <span class="btn-text">Begin Assessment</span>
+      <span class="btn-arrow">→</span>
+    </button>
+  </div>
+
+  <!-- Topics Grid -->
+  <section class="topics-section">
+    <h2 class="section-label">Topics Covered</h2>
+    <div class="topics-grid">
+      <div *ngFor="let topic of topics" class="topic-card">
+        <span class="topic-icon">{{ topic.icon }}</span>
+        <div class="topic-info">
+          <strong>{{ topic.label }}</strong>
+          <p>{{ topic.desc }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rules -->
+  <section class="rules-section">
+    <h2 class="section-label">How It Works</h2>
+    <div class="rules-grid">
+      <div *ngFor="let rule of rules" class="rule-item">
+        <span class="rule-icon">{{ rule.icon }}</span>
+        <span class="rule-text">{{ rule.text }}</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="cta-row">
+    <button class="start-btn start-btn-lg" (click)="startQuiz()">
+      <span class="btn-text">Start Quiz</span>
+      <span class="btn-arrow">→</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+.welcome-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1.5rem 4rem;
+  gap: 4rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding-top: 2rem;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(ellipse at center, rgba(6, 182, 212, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-badge {
+  position: relative;
+  z-index: 1;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+  background: rgba(6, 182, 212, 0.08);
+}
+
+.hero-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 1rem;
+  line-height: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-line1 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: rgba(255,255,255,0.15);
+  line-height: 1;
+}
+
+.title-line2 {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #06b6d4 0%, #818cf8 50%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-top: -0.15em;
+}
+
+.hero-sub {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Start Button */
+.start-btn {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, #06b6d4, #6366f1);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.25rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.35);
+  font-family: inherit;
+}
+
+.start-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px rgba(6, 182, 212, 0.45);
+}
+
+.start-btn-lg { font-size: 1.1rem; padding: 1.05rem 2.75rem; }
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.start-btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* Sections */
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin: 0 0 1.25rem;
+  text-align: center;
+}
+
+/* Topics */
+.topics-section { width: 100%; }
+
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.topic-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.topic-card:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px);
+}
+
+.topic-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+.topic-info strong {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.topic-info p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Rules */
+.rules-section { width: 100%; }
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.rule-item {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.rule-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+.rule-text {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* CTA */
+.cta-row {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .topics-grid, .rules-grid { grid-template-columns: 1fr; }
+  .title-line1, .title-line2 { font-size: 3.5rem; }
+  .hero-sub { font-size: 0.9rem; }
+}
