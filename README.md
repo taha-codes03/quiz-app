@@ -45,16 +45,16 @@ quiz-app/
 
 ## ✨ Features
 
-| Feature | Details |
-|---|---|
-| **40 Questions** | 10 OOP · 10 DSA · 10 Programming Fundamentals · 10 Information Security |
-| **Random selection** | 10 questions shuffled from all topics each run |
-| **30-second timer** | Circular SVG countdown; auto-advances on timeout |
-| **Instant feedback** | Correct/wrong highlight + explanation after each answer |
-| **Track bar** | Visual dot trail showing correct/wrong/skipped per question |
-| **Result screen** | Grade, score %, time taken, topic breakdown bars |
-| **Answer review** | Full Q&A review with explanations, expandable |
-| **Angular Routing** | Lazy-loaded standalone components via Router |
+| Feature              | Details                                                                 |
+| -------------------- | ----------------------------------------------------------------------- |
+| **40 Questions**     | 10 OOP · 10 DSA · 10 Programming Fundamentals · 10 Information Security |
+| **Random selection** | 10 questions shuffled from all topics each run                          |
+| **30-second timer**  | Circular SVG countdown; auto-advances on timeout                        |
+| **Instant feedback** | Correct/wrong highlight + explanation after each answer                 |
+| **Track bar**        | Visual dot trail showing correct/wrong/skipped per question             |
+| **Result screen**    | Grade, score %, time taken, topic breakdown bars                        |
+| **Answer review**    | Full Q&A review with explanations, expandable                           |
+| **Angular Routing**  | Lazy-loaded standalone components via Router                            |
 
 ---
 
@@ -70,7 +70,3 @@ quiz-app/
 - **ngFor / ngIf** directives throughout
 
 ---
-
-## 📋 Resume Point
-
-> Built an interactive CS Quiz Application using Angular 17 with lazy-loaded routing, BehaviorSubject-driven state management, and a circular SVG countdown timer — featuring 40 university-level questions across OOP, DSA, Programming Fundamentals, and Information Security, with real-time feedback, topic-wise performance breakdown, and complete answer review.
